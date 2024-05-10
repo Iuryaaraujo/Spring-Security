@@ -62,14 +62,49 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    // método de add um role no meu usuario
+    public void addRole(Role role){
+        roles.add(role);
+    }
+
+    // metodo para testa de usuario posssui o role admin
+    public boolean hasRole(String roleName){
+        for (Role role : roles) {
+            if (role.getAuthority().equals(roleName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Comparando o nome
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
     @Override
     //obter Autoridades
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     @Override
@@ -96,39 +131,5 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    // método de add um role no meu usuario
-    public void addRole(Role role){
-        roles.add(role);
-    }
-
-    // metodo para testa de usuario posssui o role admin
-    public boolean hasRole(String roleName){
-        for (Role role : roles) {
-            if (role.getAuthority().equals(roleName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return Objects.equals(id, user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
     }
 }

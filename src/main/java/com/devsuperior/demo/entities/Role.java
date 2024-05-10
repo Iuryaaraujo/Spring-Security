@@ -9,6 +9,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_role")
 public class Role implements GrantedAuthority {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,6 +31,7 @@ public class Role implements GrantedAuthority {
         this.id = id;
     }
 
+    // implementadondo o metodo da interface com esse get
     @Override
     public String getAuthority() {
         return authority;

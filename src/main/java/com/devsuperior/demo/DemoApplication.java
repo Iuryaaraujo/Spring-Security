@@ -21,7 +21,7 @@ public class DemoApplication {
 //	public void run(String... args) throws Exception {
 //		System.out.println("CODIFICAR = " + passwordEncoder.encode("123456"));
 //
-//		// Comparando se a senha é realmente essa
+//		// Comparando se a senha se é realmente essa
 //		boolean result = passwordEncoder.matches("123456", "$2a$10$OEHHnuECjoKSWk9LpKhRr.V7BkV7IzDweR3igTr91ds6OOxAdWzJO");
 //		System.out.println("Resultado = " + result);
 //	}
